@@ -9,3 +9,6 @@ Thumbs.db
 # Local trial recordings should be deliberately selected for submission.
 /recordings/
 # Do not ignore .meta, .fbx or .task files: they are required starter assets.
+
+# Instructor publishing notes stay local.
+/PUBLISHING.md
