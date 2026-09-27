@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: b69358bcc95711146a16e2391ccf766e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 211194
+  packageName: African Elephant Animated
+  packageVersion: 2019.4.0f1
+  assetPath: Assets/Elephant/Scripts/Elephant.cs
+  uploadId: 483688

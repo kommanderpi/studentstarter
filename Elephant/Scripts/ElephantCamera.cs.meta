@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 2393de798ff0bc443a1f9d7816a18353
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 211194
+  packageName: African Elephant Animated
+  packageVersion: 2019.4.0f1
+  assetPath: Assets/Elephant/Scripts/ElephantCamera.cs
+  uploadId: 483688
