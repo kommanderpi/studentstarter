@@ -3,8 +3,9 @@
 The supplied Python bridge performs pose estimation and converts landmarks into
 six signals. The included DigiPhant Unity scripts provide a reference receiver,
 interface, calibration, mapping, rig control and locomotion. Students can adapt
-these components or implement their own. Trial logging remains student work. MediaPipe estimates pose; your design gives
-the estimated movements meaning in the digital twin.
+these components or implement their own. Begin with [AGENT_SETUP.md](AGENT_SETUP.md)
+to inspect and adapt to the actual project. Trial logging remains student work.
+MediaPipe estimates pose; your design gives those movements meaning.
 
 ## Processes and ports
 
@@ -142,8 +143,10 @@ digital twin.
 | P3 | Right hand height | Trunk curl |
 | P3 | Hand separation | Ears |
 
-These roles match the supplied three-person reference mapping. Decide whether to add
-travel, how conflicting inputs combine, and how each student contributes.
+These roles match the supplied three-person reference mapping. The reference
+also maps P1 left-hand height to travel and P1 lean to steering. Decide whether
+to keep or change travel, how conflicting inputs combine, and how each student
+contributes.
 
 ## References and provenance
 
@@ -153,7 +156,7 @@ travel, how conflicting inputs combine, and how each student contributes.
   https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_full/float16/latest/pose_landmarker_full.task
 - Original elephant documentation: `Elephant/Elephant_readme.txt`.
 - `asset-checksums.json` records SHA-256 hashes of the distributed model and
-  elephant files, including import metadata. The source model URL uses `latest`;
+  elephant and DigiPhant files, including import metadata. The source model URL uses `latest`;
   the checksum identifies the actual bundled version.
 
 The elephant remains a third-party asset with its existing terms. This starter

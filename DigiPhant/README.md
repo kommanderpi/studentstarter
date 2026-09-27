@@ -68,11 +68,11 @@ If the old standalone camera window is still running, quit it with Q once before
 using this update. Built players use a separately launched bridge; automatic
 process launch is currently Editor-only.
 
-Follow `DigiPhantStarter/README.md`, section 3, for explicit Mac and Windows
+Follow `DigiPhantStarter/AGENT_SETUP.md` for explicit Mac and Windows
 commands to create `DigiPhantStarter/Tracking/.venv` and install dependencies.
 The packaged camera launcher expects that exact location beside Assets.
 No separate setup launcher is included. To test the camera independently, use
-the bridge commands in section 4 of that README and quit with Q before returning
+the Camera test commands in that guide and quit with Q before returning
 to automatic launch in Unity.
 
 The source setup used an Apple Silicon Mac with Python 3.14. Fresh-project import,
@@ -191,7 +191,7 @@ transform handles world travel, avoiding double root motion.
 - `Editor/DigiPhantLocomotionValidation.cs`: locomotion and gesture-composition checks.
 - `Editor/DigiPhantSetup.cs`: template creation, performer presets, and validation.
 - `Scenes/DigiPhant.unity`: ready-to-open template scene.
-- Project-root `Tracking/bridge.py`: MediaPipe capture, performer assignment,
+- `DigiPhantStarter/Tracking/bridge.py`: MediaPipe capture, performer assignment,
   body-relative measurements, and local UDP output.
 
 Protocol: JSON `version: 1`, `performerCount` (1–4), with `people` entries containing `slot` (1–4),

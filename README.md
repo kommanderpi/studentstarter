@@ -1,67 +1,50 @@
 # DigiPhant student starter
 
-Integrate real-world movement tracking with a rigged elephant in your own Unity
-project. Work in groups of three; use your coding agent to build and test the
-Unity integration. Your instructor provides the assignment deliverables separately.
+Use your coding agent to integrate real-world movement tracking and a rigged
+elephant into your own Unity project. The repository provides assets, tracking
+software and a reference Unity implementation. Your agent should inspect your
+project and computer, then integrate, build and adapt the components to your setup.
+Work in groups of three; assignment deliverables are provided separately.
 
-## What is included
+## 1. Create or choose your Unity project
 
-- `Elephant/` and `Elephant.meta`: the supplied elephant asset package, unchanged,
-  including its rig, animations, prefab, textures, materials, vendor scripts and
-  vendor demo scene.
-- `Tracking/bridge.py`: webcam capture, MediaPipe pose detection, performer
-  assignment, movement measurements, skeleton preview, and local UDP output.
-- `Tracking/pose_landmarker_full.task`: the actual pose model, already included.
-- `Tracking/requirements.txt` and tests: pinned direct Python dependencies.
-- `DigiPhant/` and `DigiPhant.meta`: custom Unity runtime and editor scripts, the
-  DigiPhant example scene, stage materials and usage guide.
-- Explicit setup instructions below and the [integration contract](INTEGRATION.md).
+Create a project in Unity Hub or use your existing project. Universal 3D / URP is
+the easiest starting point because the supplied materials use URP. Open a new
+project once so Unity creates its directories. For an existing project, let your
+agent inspect its version, rendering and existing work before changing settings.
 
-This is a starter for a project you create yourself, including a reference
-integration you can run, inspect and adapt. It includes the receiver, calibration
-UI, rig control and locomotion, but no Unity project settings or package manifest.
-You can also build your own integration using the same tracking contract.
+You do not need to reproduce the instructor's machine. The reference environment
+was Unity 6000.6.0f1 with Python 3.14 on an Apple Silicon Mac. Your agent should
+check compatibility and select the appropriate local setup. Windows and other
+configurations still need validation on the actual computer.
 
-Unity, Git, Python and Python dependency binaries are installed on each computer;
-they are not bundled. Setup needs internet for package installation. The included
-pose model avoids an initial model download. Camera processing runs locally.
+## 2. Clone the repository, or ask your agent to clone it
 
-## 1. Create your own Unity project
-
-Install Git, Python and Unity Hub. Create a new **Universal 3D / URP** project in
-Unity Hub; the supplied elephant materials use URP. Choose a folder you can find,
-such as `Documents/MyElephantProject`. Open it once, then close the editor while
-copying assets.
-
-The source setup used Unity **6000.6.0f1**, Python **3.14**, MediaPipe **0.10.35**,
-and OpenCV **4.14.0.94** on an Apple Silicon Mac. Python 3.14 is the reference
-interpreter for the commands below. Windows instructions are provided but have
-not been validated on a Windows machine. Have your agent diagnose installation
-errors before changing dependency versions, and record any changes.
-
-## 2. Clone this starter into the project root
-
-The starter repository is https://github.com/kommanderpi/studentstarter.
-Clone it into your Unity project using the commands below.
-
-Open Terminal on macOS or PowerShell on Windows. Change into your new Unity
-project folder, using your actual path:
+Clone beside `Assets`, not inside it. In Terminal or PowerShell:
 
 ```text
 cd "PATH_TO_YOUR_UNITY_PROJECT"
 git clone https://github.com/kommanderpi/studentstarter.git DigiPhantStarter
 ```
 
-Clone beside `Assets`, **not inside `Assets`**. The Python environment and model
-should stay outside Unity's asset importer. The result should be:
+Or give your agent this instruction:
+
+> Locate my Unity project root, containing Assets, Packages and ProjectSettings.
+> Clone https://github.com/kommanderpi/studentstarter.git into a directory named
+> DigiPhantStarter beside Assets. If already cloned, inspect and reuse it without
+> overwriting local work. Keep the clone outside Assets.
+
+Expected layout:
 
 ```text
-MyElephantProject/
+MyUnityProject/
   Assets/
   Packages/
   ProjectSettings/
   DigiPhantStarter/
     README.md
+    AGENT_SETUP.md
+    INTEGRATION.md
     Elephant/
     Elephant.meta
     DigiPhant/
@@ -69,209 +52,82 @@ MyElephantProject/
     Tracking/
 ```
 
-Keep the cloned directory named `DigiPhantStarter` to match the commands below.
-If you already cloned it there, do not clone another copy.
+This name/location matches the reference camera launcher. If you cloned elsewhere,
+ask your agent to reconcile the location or adapt the launcher before running it.
+Cloning downloads the components; it does not import them or install dependencies.
 
-## 3. Import the Unity assets and install tracking
+## 3. Ask your agent to inspect and integrate
 
-Give your agent this task:
+Open your agent in the **Unity project root**, so it can inspect both the existing
+project and cloned files. Give it this prompt:
 
-> Read DigiPhantStarter/README.md. Follow section 3 to inspect this computer,
-> copy the Elephant and DigiPhant assets into my Unity project, create a local Python environment,
-> install the specified dependencies and verify the installation. Preserve all
-> asset metadata and existing work. Explain what you changed and report any
-> checks you could not complete. Then help me run the camera test in section 4.
+> Inspect my Unity project, this computer's setup, and the cloned DigiPhantStarter
+> repository. Read DigiPhantStarter/README.md, AGENT_SETUP.md and INTEGRATION.md,
+> plus the relevant scripts and existing project instructions. Integrate the
+> elephant and motion tracking into my project, adapting or building components
+> as needed for my Unity version, render pipeline, OS, Python environment and
+> camera. Reuse the supplied implementation where appropriate and preserve my
+> existing work. Carry out setup and integration, verify what you can, then help
+> me test live control. Explain the data path and record the actual setup, changes,
+> test results and remaining checks in DIGIPHANT_SETUP.md at my project root.
 
-### Instructions for the agent
+The agent's detailed instructions and Mac/Windows command examples are in
+[AGENT_SETUP.md](AGENT_SETUP.md). Students do not have to perform a fixed sequence
+of copy and installation commands manually. You may need to grant camera access,
+open the editor, or perform movements for tests the agent cannot do alone.
 
-1. Locate the Unity project root: it must contain `Assets`, `Packages` and
-   `ProjectSettings`, with `DigiPhantStarter` beside them. Run the commands below
-   from that root. Confirm the operating system, Python version and interpreter
-   path before choosing commands. Use Python 3.14 as the reference version; if it
-   is unavailable, explain the installation needed rather than silently using a
-   different interpreter.
-2. Ensure Unity is closed before copying the asset. Check both `Assets/Elephant`
-   and `Assets/Elephant.meta`, plus `Assets/DigiPhant` and `Assets/DigiPhant.meta`.
-   If any exists, inspect it and preserve existing
-   work: reuse an identical complete import; report differences or an incomplete
-   import before replacing anything. Run the copy commands only when neither
-   destination for that asset folder or its metadata exists.
-3. Copy the entire source `Elephant` directory, including all nested `.meta`
-   files, and its sibling `Elephant.meta`. Also copy the entire `DigiPhant`
-   directory and its sibling `DigiPhant.meta`. Do not move sources or regenerate
-   metadata. Keep `Tracking` outside `Assets`.
+By the end, you should know which scene to open, how to start tracking, how to
+calibrate and reset it, what each person controls, and what has actually been
+verified on your computer. Ask your agent to explain anything you cannot connect
+to the physical performance or collected data.
 
-macOS, for a fresh asset import:
+## What the agent can reuse
 
-```sh
-cp -R DigiPhantStarter/Elephant Assets/Elephant
-cp DigiPhantStarter/Elephant.meta Assets/Elephant.meta
-cp -R DigiPhantStarter/DigiPhant Assets/DigiPhant
-cp DigiPhantStarter/DigiPhant.meta Assets/DigiPhant.meta
-```
+| Component | Contents |
+| --- | --- |
+| `Elephant/` and `Elephant.meta` | Rigged elephant, animations, textures, materials, prefab, vendor scripts and demo scene |
+| `DigiPhant/` and `DigiPhant.meta` | Reference scene, stage materials, receiver, camera preview, calibration, mapping, rig control, locomotion and editor tools |
+| `Tracking/bridge.py` | Webcam capture, MediaPipe, performer assignment, movement signals, skeleton display and local UDP output |
+| `Tracking/pose_landmarker_full.task` | Bundled pose model |
+| `Tracking/requirements.txt` and tests | Pinned direct dependencies and Python checks |
+| `INTEGRATION.md` | Message format, ports, signals, calibration and tracking behaviour |
+| `asset-checksums.json` | Fingerprints of supplied Unity assets and pose model |
 
-Windows PowerShell, for a fresh asset import:
+The reference scene is `DigiPhant/Scenes/DigiPhant.unity` in the clone, normally
+imported as `Assets/DigiPhant/Scenes/DigiPhant.unity`. It is an example to run and
+adapt, not a requirement to replace your existing scene. Unity project settings
+and package manifests are deliberately left to your project. Unity, Git, Python
+and installed dependency binaries are not bundled. Package installation needs
+internet; camera processing and communication run locally.
 
-```powershell
-Copy-Item -LiteralPath .\DigiPhantStarter\Elephant -Destination .\Assets\Elephant -Recurse
-Copy-Item -LiteralPath .\DigiPhantStarter\Elephant.meta -Destination .\Assets\Elephant.meta
-Copy-Item -LiteralPath .\DigiPhantStarter\DigiPhant -Destination .\Assets\DigiPhant -Recurse
-Copy-Item -LiteralPath .\DigiPhantStarter\DigiPhant.meta -Destination .\Assets\DigiPhant.meta
-```
+## Try the reference controls after integration
 
-4. Verify that all source files have matching destination paths and contents.
-   The `Elephant/`, `DigiPhant/` and their root `.meta` entries in `asset-checksums.json` provide
-   SHA-256 hashes; destination paths are those entries prefixed with `Assets/`.
-   Confirm `Assets/Elephant/Prefabs/Elephant.prefab` and its metadata are present.
-5. Create `DigiPhantStarter/Tracking/.venv` using the selected Python interpreter.
-   If it already exists, check its interpreter and reuse it if suitable; do not
-   overwrite or delete an existing environment without resolving any mismatch.
-   Run the environment-creation command below only when `.venv` does not exist.
-   Install dependencies using that environment's Python, then verify imports
-   and dependency consistency. Stop on an error and diagnose it before continuing.
+Your agent should give instructions matching your final scene. For the unchanged
+reference scene:
 
-macOS:
+1. Press Play. Unity launches the local bridge and shows the camera preview.
+2. Use Test sliders to explore the rig, or choose Camera for live control.
+3. Select the performer count and Full body or Seated / upper body.
+4. Click Set neutral pose (10 seconds), get into position and hold still.
+5. Test one control at a time, then a collective action. Stop Play to stop the
+   bridge Unity launched. An independently started bridge must be stopped separately.
 
-```sh
-python3.14 -m venv DigiPhantStarter/Tracking/.venv
-DigiPhantStarter/Tracking/.venv/bin/python -m pip install -r DigiPhantStarter/Tracking/requirements.txt
-DigiPhantStarter/Tracking/.venv/bin/python -m pip check
-DigiPhantStarter/Tracking/.venv/bin/python -c "import sys, cv2, mediapipe; print(sys.executable); print('MediaPipe', mediapipe.__version__, 'OpenCV', cv2.__version__)"
-```
+The reference supports solo testing and three-person performance. Full-body mode
+needs hips and feet visible for its default controls; seated mode uses shoulders
+and hands. The [reference usage guide](DigiPhant/README.md) explains roles and
+controls. Calibration, mappings and camera framing may change as you adapt them.
 
-Windows PowerShell:
+## Git and student adaptations
 
-```powershell
-py -3.14 -m venv .\DigiPhantStarter\Tracking\.venv
-& .\DigiPhantStarter\Tracking\.venv\Scripts\python.exe -m pip install -r .\DigiPhantStarter\Tracking\requirements.txt
-& .\DigiPhantStarter\Tracking\.venv\Scripts\python.exe -m pip check
-& .\DigiPhantStarter\Tracking\.venv\Scripts\python.exe -c "import sys, cv2, mediapipe; print(sys.executable); print('MediaPipe', mediapipe.__version__, 'OpenCV', cv2.__version__)"
-```
+The starter clone is its own repository. If the Unity project also uses Git, ignore
+`/DigiPhantStarter/` in the outer repository to avoid accidentally staging a nested
+repository. Commit imported assets with their `.meta` files and your own work in
+the student project. Record the starter URL and commit in `DIGIPHANT_SETUP.md`.
+Exclude local `.venv`, Unity `Library`, `Temp` and `Logs` directories.
 
-6. Verify that `Tracking/pose_landmarker_full.task` matches its entry in
-   `asset-checksums.json`. It is already supplied; no model download is needed.
-   Run the Python checks in section 6, then help the student perform the live
-   camera test in section 4. Report installation checks separately from camera
-   and Unity checks; an import succeeding does not prove the webcam works.
-
-Do not copy another person's `.venv`, install dependencies globally, or install
-MediaPipe into Unity's Package Manager. These commands invoke the environment
-directly, so shell activation is unnecessary. Keep the dependency pins unless
-a diagnosed compatibility issue requires a documented change.
-
-Reopen Unity and wait for import and script compilation to finish. For the
-reference integration, open `Assets/DigiPhant/Scenes/DigiPhant.unity`. Duplicate
-it before experimenting. Alternatively, create your own scene and drag
-`Assets/Elephant/Prefabs/Elephant.prefab` into it, then add your own integration.
-Preserve both folders' `.meta` files when sharing your project.
-
-The vendor `Elephant` component uses keyboard input and controls animation.
-The supplied DigiPhant scene already disables the vendor controller on its instance.
-Disable it on your scene instance when implementing your own movement control.
-Decide explicitly whether your rig driver or Animator owns each bone; they can
-otherwise overwrite each other. Keep your new scripts and scenes in a separate
-folder such as `Assets/StudentWork`.
-
-## 4. Test the camera independently
-
-macOS:
-
-```sh
-DigiPhantStarter/Tracking/.venv/bin/python DigiPhantStarter/Tracking/bridge.py --people 1 --upper-body-only
-```
-
-Windows PowerShell:
-
-```powershell
-& .\DigiPhantStarter\Tracking\.venv\Scripts\python.exe .\DigiPhantStarter\Tracking\bridge.py --people 1 --upper-body-only
-```
-
-Allow camera access if prompted. A separate preview window should show your
-skeleton and P1 label. Keep your shoulders and hands visible in upper-body mode.
-Click the preview window and press **Q** to quit or **R** to reset identities.
-
-For the group, use `--people 3`. Remove `--upper-body-only` for full-body tracking
-with visible hips and feet. Use `--camera 1` if the default camera is wrong.
-Assigned performers start left-to-right in the unmirrored image. A grey skeleton
-means detected but unassigned; initial assignment waits for the chosen group size.
-
-The camera test works without a Unity receiver. The supplied DigiPhant scene
-provides a reference receiver and elephant controls. Keep the Python preview
-visible for the independent camera test; Unity uses `--no-window` automatically
-when it launches its own bridge and displays the preview.
-
-## 5. Run and adapt the reference integration
-
-Quit a separately launched bridge with Q before trying Unity's automatic launch.
-Open `Assets/DigiPhant/Scenes/DigiPhant.unity` and press Play. The example starts
-Python from `DigiPhantStarter/Tracking/.venv` and displays its camera preview.
-Choose the group size, Full body or Seated / upper body, then Camera. Click
-**Set neutral pose (10 seconds)**, get into position, and hold still. Test one
-control at a time. Test sliders also let you explore the rig without live tracking.
-
-The automatic launcher expects the clone to be named `DigiPhantStarter` beside
-`Assets`. Do not move its Tracking directory. Auto-launch is Editor-only; built
-players require a separately started bridge. Camera permissions still apply.
-
-Read the usage guide at `Assets/DigiPhant/README.md` and
-[INTEGRATION.md](INTEGRATION.md), then give your agent this task:
-
-> Inspect the supplied DigiPhant Unity integration and explain how tracking data
-> reaches the elephant. Help me run the reference scene, verify one control and
-> duplicate it for our group. Then help us adapt our performer assignments and
-> mappings. Make one testable change at a time, preserve the original example,
-> and place our new scenes and scripts under Assets/StudentWork.
-
-Alternatively, ask your agent to create your own receiver and scene from the
-protocol, using the supplied implementation as a reference. Your group still
-needs to understand its measurements, collect trial data, design a collective
-performance and substantiate its revisions.
-
-## 6. Run the supplied Python checks
-
-From the Unity project root on macOS:
-
-```sh
-DigiPhantStarter/Tracking/.venv/bin/python -m unittest discover -s DigiPhantStarter/Tracking -p 'test_*.py'
-```
-
-On Windows PowerShell:
-
-```powershell
-& .\DigiPhantStarter\Tracking\.venv\Scripts\python.exe -m unittest discover -s .\DigiPhantStarter\Tracking -p 'test_*.py'
-```
-
-These test feature extraction, performer matching, and local preview transport.
-They do not verify your Unity connection or real camera performance.
-
-## Git and updates
-
-The starter clone is a separate Git repository inside your project. If your group
-also uses Git for the whole Unity project, add `/DigiPhantStarter/` to the outer
-project's `.gitignore`; commit the imported `Assets/Elephant` with its metadata
-the imported `Assets/DigiPhant` with its metadata, and your own work normally. Record the starter repository URL and the output of
-`git -C DigiPhantStarter rev-parse HEAD` in your project README so others can clone
-the same version. Never commit `.venv`, Unity `Library`, `Temp`, or `Logs`.
-
-To check starter changes, run `git -C DigiPhantStarter status`. To receive an
-instructor update with a clean working tree, run `git -C DigiPhantStarter pull
---ff-only`. Updates affect the clone, not the already imported asset. Keep local
-bridge changes committed before updating; do not discard work to make a pull pass.
-If you modify the bridge, include your modified source in your final submission.
-
-## Troubleshooting
-
-- No camera: close other camera applications, check OS camera permission for the
-  launching application, and try another camera index.
-- No assignment: choose the correct people count and make all required body parts
-  visible. Crossings and occlusion can confuse position-based IDs; reset and recalibrate.
-- No Unity data: verify the port and loopback address, run only one bridge, and
-  ensure the receiver is active and Camera mode is selected. Calibrate before
-  expecting movement.
-- Pink materials: check that your project uses URP and inspect material/shader
-  compatibility with your selected Unity version.
-- Vendor keyboard errors: disable the vendor control component on your instance
-  when replacing it with tracking control.
-- Dependency installation fails: record the Python version, operating system,
-  architecture and complete error, and ask your agent to diagnose it. The supplied
-  `.venv` must be created locally; Windows compatibility is not yet certified.
+Have your agent preserve local changes before pulling instructor updates. Updates
+to the clone do not automatically update imported assets or scripts. Reconcile
+changes with your adapted copies; do not overwrite your work to match an update.
+If you adapt the Python bridge, preserve that source in your group's own version
+history or submission as well. Do not push student adaptations to the instructor
+repository unless asked.
