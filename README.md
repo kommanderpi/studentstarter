@@ -2,7 +2,7 @@
 
 Integrate real-world movement tracking with a rigged elephant in your own Unity
 project. Work in groups of three; use your coding agent to build and test the
-Unity integration. See [deliverables.md](deliverables.md) for the exercise.
+Unity integration. Your instructor provides the assignment deliverables separately.
 
 ## What is included
 
