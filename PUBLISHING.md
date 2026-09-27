@@ -2,7 +2,8 @@
 
 Publish the contents of this directory as the root of the starter repository.
 The student instructions assume the README, Elephant, DigiPhant and Tracking directories
-are directly at its root. No repository URL has been assigned yet.
+are directly at its root. The repository is
+https://github.com/kommanderpi/studentstarter.
 
 For a fresh copy without Git history, run these commands from this directory
 after choosing the remote. If already initialized, use the existing history and

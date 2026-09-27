@@ -41,16 +41,15 @@ errors before changing dependency versions, and record any changes.
 
 ## 2. Clone this starter into the project root
 
-Your instructor will provide the Git repository URL after publishing this directory
-as a repository. Replace `INSTRUCTOR_REPOSITORY_URL` below with that URL; do not
-type the placeholder literally. This assumes this README is at the repository root.
+The starter repository is https://github.com/kommanderpi/studentstarter.
+Clone it into your Unity project using the commands below.
 
 Open Terminal on macOS or PowerShell on Windows. Change into your new Unity
 project folder, using your actual path:
 
 ```text
 cd "PATH_TO_YOUR_UNITY_PROJECT"
-git clone INSTRUCTOR_REPOSITORY_URL DigiPhantStarter
+git clone https://github.com/kommanderpi/studentstarter.git DigiPhantStarter
 ```
 
 Clone beside `Assets`, **not inside `Assets`**. The Python environment and model
