@@ -245,3 +245,19 @@ The elephant's camera controls pause during the countdown. **Cancel countdown**
 aborts it. Changing input mode, movement mode, group size or reassigning people
 also cancels it. All required movements must be visible when the timer ends;
 if calibration fails, correct your framing and start the countdown again.
+
+## Record a collective performance
+
+After selecting Camera and calibrating, click **Record performance** above the
+controls. Keep the Game view visible with the camera preview and elephant in view.
+Click **Stop recording and save**, then check the MP4 in the project-root
+`Recordings/<session>/performance.mp4`. This captures the complete Game view at
+up to 10 fps and 1280×720 without microphone audio. Tracking continues during
+capture; export runs in a separate Python process afterward. Frames and timing
+metadata are retained for export recovery. Verify the saved video, upload it to
+your team's Drive folder and share the link. Recording does not upload to Drive.
+
+In the student starter, read `DigiPhantStarter/RECORDING.md` for full instructions
+and `STUDENT_GIT.md` for submitting a lightweight project with recordings and
+heavy shared assets excluded. Live Game view recording must be tested on your
+own machine; do not switch away from the Game view during a take.

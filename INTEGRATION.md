@@ -3,7 +3,8 @@
 The supplied Python bridge performs pose estimation and converts landmarks into
 six signals. The included DigiPhant Unity scripts provide a reference receiver,
 interface, calibration, mapping, rig control and locomotion. Students can adapt
-these components or implement their own. Begin with [AGENT_SETUP.md](AGENT_SETUP.md)
+these components or implement their own. The reference also includes Game view
+recording and a Python MP4 exporter; see [RECORDING.md](RECORDING.md). Begin with [AGENT_SETUP.md](AGENT_SETUP.md)
 to inspect and adapt to the actual project. Trial logging remains student work.
 MediaPipe estimates pose; your design gives those movements meaning.
 

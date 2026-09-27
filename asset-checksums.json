@@ -107,11 +107,11 @@
   "DigiPhant/Materials/Stage.mat": "d58ebd74962f7535d9534d267f1f840b08566e0a27be524e168ab00d832a27bb",
   "DigiPhant/Materials/Stage.mat.meta": "65347385eb11934494ae414abd20af6504567ec3dd0545ebb47c57e2dbc78f71",
   "DigiPhant/Materials.meta": "da4b4c3aa6addaee63560ab71a7ed07dfb9f9eac3fc569d7a3d7124279aa363c",
-  "DigiPhant/README.md": "97a08e6c2ba32fb844b5a33dbc802fd323477d99c3f6bd6a7ff632d8f2229156",
+  "DigiPhant/README.md": "f8530e033679cffd600d91494d6dc70c20085e3855a4450474ad1f9217191911",
   "DigiPhant/README.md.meta": "e4a2096b45bfd2393f1617d994097408a1612e3e09b0cdf6d3f86da5238f787a",
   "DigiPhant/Runtime/DigiPhantCameraPreview.cs": "1e14785776a4c82cd49c704717f9281a503e59f332258258038ce127f4e9681a",
   "DigiPhant/Runtime/DigiPhantCameraPreview.cs.meta": "9fd61ed0de99c406fcfb9f29b2efc61e16f95ead0b6a9e058e0bd73532d3a4ee",
-  "DigiPhant/Runtime/DigiPhantController.cs": "be807038bed4728e4239fe604f6d8483c6e279618e8d90d312a6d3506be679b2",
+  "DigiPhant/Runtime/DigiPhantController.cs": "c337aab6cd67a6362276df87ab572ee71b5897419c80eb286be847c4d2bc1273",
   "DigiPhant/Runtime/DigiPhantController.cs.meta": "2e612f55348da356c992b16776f4760e5c4516915b5902fdf8343271215d3426",
   "DigiPhant/Runtime/DigiPhantLocomotion.cs": "9cd760c11d8684db7f8aeb3d99486d25ae1759d34631dd7b8e4234e14477a39b",
   "DigiPhant/Runtime/DigiPhantLocomotion.cs.meta": "f5f42fd7e4802665fcedd0222712592c11b3145ec4c619feba930fd671636c42",
@@ -120,5 +120,7 @@
   "DigiPhant/Scenes/DigiPhant.unity.meta": "3f3524f697c3158decb9139ebf687279593b06cab2aabef06cf90b49754ec2b6",
   "DigiPhant/Scenes.meta": "cdbacd0a76e17f2f9e52d9606fd0e6ef20cc0ee1c649df7476c30d78310d7e57",
   "DigiPhant.meta": "3dccb0e1984bcf5e85bddf27e9d03fdc05de3458ec1a239e9d1423161ee97baf",
-  "Tracking/pose_landmarker_full.task": "4eaa5eb7a98365221087693fcc286334cf0858e2eb6e15b506aa4a7ecdcec4ad"
+  "Tracking/pose_landmarker_full.task": "4eaa5eb7a98365221087693fcc286334cf0858e2eb6e15b506aa4a7ecdcec4ad",
+  "DigiPhant/Runtime/DigiPhantRecording.cs.meta": "d4f57a58e5970a3f99d563365e3a74e95c958ba183a79fa39d3b21a89dec60de",
+  "DigiPhant/Runtime/DigiPhantRecording.cs": "3e1370d69edd14219dfd2b79f31334b97081655e04eff5e1decda8a332ca3e94"
 }

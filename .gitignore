@@ -6,8 +6,9 @@ Thumbs.db
 *.download
 .idea/
 .vscode/
-# Local trial recordings should be deliberately selected for submission.
+# Videos and intermediate recording frames belong on Drive, not in Git.
 /recordings/
+/Recordings/
 # Do not ignore .meta, .fbx or .task files: they are required starter assets.
 
 # Instructor publishing notes stay local.

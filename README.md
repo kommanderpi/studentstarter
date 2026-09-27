@@ -70,6 +70,8 @@ project and cloned files. Give it this prompt:
 > existing work. Carry out setup and integration, verify what you can, then help
 > me test live control. Explain the data path and record the actual setup, changes,
 > test results and remaining checks in DIGIPHANT_SETUP.md at my project root.
+> Also integrate recording following RECORDING.md and prepare my own lightweight
+> project repository following STUDENT_GIT.md. Keep videos on Drive.
 
 The agent's detailed instructions and Mac/Windows command examples are in
 [AGENT_SETUP.md](AGENT_SETUP.md). Students do not have to perform a fixed sequence
@@ -89,6 +91,7 @@ to the physical performance or collected data.
 | `DigiPhant/` and `DigiPhant.meta` | Reference scene, stage materials, receiver, camera preview, calibration, mapping, rig control, locomotion and editor tools |
 | `Tracking/bridge.py` | Webcam capture, MediaPipe, performer assignment, movement signals, skeleton display and local UDP output |
 | `Tracking/pose_landmarker_full.task` | Bundled pose model |
+| `Tracking/encode_recording.py` | Exports timestamped Game view frames as an MP4 |
 | `Tracking/requirements.txt` and tests | Pinned direct dependencies and Python checks |
 | `INTEGRATION.md` | Message format, ports, signals, calibration and tracking behaviour |
 | `asset-checksums.json` | Fingerprints of supplied Unity assets and pose model |
@@ -117,17 +120,24 @@ needs hips and feet visible for its default controls; seated mode uses shoulders
 and hands. The [reference usage guide](DigiPhant/README.md) explains roles and
 controls. Calibration, mappings and camera framing may change as you adapt them.
 
+## Record your performance
+
+After calibration, click **Record performance** to capture the Game view with the
+camera preview and elephant together. Stop and save, check the resulting MP4, then
+upload it to your team's Drive folder. See [RECORDING.md](RECORDING.md) for paths,
+limitations and recovery. The recorder saves locally; Drive upload is separate.
+
 ## Git and student adaptations
 
-The starter clone is its own repository. If the Unity project also uses Git, ignore
-`/DigiPhantStarter/` in the outer repository to avoid accidentally staging a nested
-repository. Commit imported assets with their `.meta` files and your own work in
-the student project. Record the starter URL and commit in `DIGIPHANT_SETUP.md`.
-Exclude local `.venv`, Unity `Library`, `Temp` and `Logs` directories.
+Submit your own Unity project through a separate Git repository. Follow
+[STUDENT_GIT.md](STUDENT_GIT.md) to include your scenes, adapted scripts, metadata,
+package configuration and setup guide while excluding heavy supplied assets,
+models, virtual environments, recordings and Unity caches. Recover shared assets
+from the recorded starter commit. Put the checked video on Drive and link it from
+your project README.
 
-Have your agent preserve local changes before pulling instructor updates. Updates
-to the clone do not automatically update imported assets or scripts. Reconcile
-changes with your adapted copies; do not overwrite your work to match an update.
-If you adapt the Python bridge, preserve that source in your group's own version
-history or submission as well. Do not push student adaptations to the instructor
-repository unless asked.
+The starter clone is its own repository, normally ignored by the outer student
+project repository. Preserve any modified Python source or reproducible patches
+in your own version history. Pulling instructor updates does not update imported
+assets automatically; reconcile changes with your adapted copies. Do not push
+student adaptations to the instructor repository unless asked.

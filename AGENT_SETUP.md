@@ -1,7 +1,8 @@
 # Agent setup and integration guide
 
 Read the student's request, the Unity project's existing instructions, this guide,
-[README.md](README.md), [INTEGRATION.md](INTEGRATION.md) and the relevant source
+[README.md](README.md), [INTEGRATION.md](INTEGRATION.md),
+[RECORDING.md](RECORDING.md), [STUDENT_GIT.md](STUDENT_GIT.md) and the relevant source
 before changing the project. Integrate, build and verify the starter for the
 student's actual setup. Explain routine compatible adaptations and carry them
 out as part of the task, rather than seeking approval for every command.
@@ -38,7 +39,7 @@ reference documentation when compatibility is uncertain.
 
 Check these implementation assumptions:
 
-- The camera launcher resolves `../DigiPhantStarter/Tracking` relative to
+- Both the camera launcher and performance recorder resolve `../DigiPhantStarter/Tracking` relative to
   `Application.dataPath`. It expects `.venv/bin/python` on macOS/Linux or
   `.venv/Scripts/python.exe` on Windows. Adapt the imported launcher if the actual
   layout differs, recording the relative path; keep tracking outside Assets.
@@ -64,6 +65,12 @@ Check Python imports/dependencies and supplied tests, Unity compilation, scene
 references and materials, then camera/preview, assignment, neutral calibration
 and one elephant response. Check tracking loss and recovery. Start solo if
 necessary, then test the group's three-person mapping when people are available.
+Integrate the recording component and Python encoder as well: test a short take
+while driving the rig, then verify MP4 export, playback and visible camera/elephant
+content. This requires a real Game view; do not claim it passed from encoder tests.
+Help the student locate the MP4 for Drive upload; do not claim an automatic upload.
+Prepare their own lightweight Git project using STUDENT_GIT.md and document how
+to restore omitted heavy assets. Record a fresh-checkout reconstruction check.
 
 Report static checks, automated tests and live observations separately. If camera,
 GUI or performers are unavailable, finish independent work and list exact checks
@@ -211,14 +218,16 @@ provides a reference receiver and elephant controls. Keep the Python preview
 visible for the independent camera test; Unity uses `--no-window` automatically
 when it launches its own bridge and displays the preview.
 
-## Reference scene and adaptation
+## Reference scene, recording and adaptation
 
 Quit a separately launched bridge with Q before trying Unity's automatic launch.
 Open `Assets/DigiPhant/Scenes/DigiPhant.unity` and press Play. The example starts
 Python from `DigiPhantStarter/Tracking/.venv` and displays its camera preview.
 Choose the group size, Full body or Seated / upper body, then Camera. Click
 **Set neutral pose (10 seconds)**, get into position, and hold still. Test one
-control at a time. Test sliders also let you explore the rig without live tracking.
+control at a time. Use Record performance / Stop recording and save to capture
+the combined Game view; follow RECORDING.md to verify export and upload to Drive.
+Test sliders also let you explore the rig without live tracking.
 
 The automatic launcher expects the clone to be named `DigiPhantStarter` beside
 `Assets`. If the layout differs, adapt the launcher path and commands together. Keep

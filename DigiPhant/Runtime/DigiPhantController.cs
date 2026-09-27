@@ -74,6 +74,8 @@ namespace DigiPhant
         {
             if (Application.isPlaying && !Application.isBatchMode && showCameraPreview && GetComponent<DigiPhantCameraPreview>() == null)
                 gameObject.AddComponent<DigiPhantCameraPreview>();
+            if (Application.isPlaying && !Application.isBatchMode && GetComponent<DigiPhantRecording>() == null)
+                gameObject.AddComponent<DigiPhantRecording>();
             previousCount = performerCount;
             previousUpperBodyOnly = upperBodyOnly;
             ClearTracking();
@@ -339,6 +341,7 @@ namespace DigiPhant
             void Label(string text) => GUILayout.Label(text, labelStyle, GUILayout.Width(width - 32));
             GUILayout.BeginArea(new Rect(10, 10, width, Screen.height - 20), GUI.skin.box);
             GetComponent<DigiPhantCameraPreview>()?.DrawInline(width - 20);
+            GetComponent<DigiPhantRecording>()?.DrawControls(width - 32);
             scroll = GUILayout.BeginScrollView(scroll);
             Label("DIGIPHANT | collective digital twin");
             Label("Choose your group size");
