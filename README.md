@@ -6,6 +6,12 @@ software and a reference Unity implementation. Your agent should inspect your
 project and computer, then integrate, build and adapt the components to your setup.
 Work in groups of three; assignment deliverables are provided separately.
 
+## Optional: add the static savannah course
+
+The self-contained URP package is in [SavannahCourse/README.md](SavannahCourse/README.md).
+Its default tool injects the course into a saved elephant scene after creating a
+unique backup, preserving the student's controls and setup.
+
 ## 1. Create or choose your Unity project
 
 Create a project in Unity Hub or use your existing project. Universal 3D / URP is
